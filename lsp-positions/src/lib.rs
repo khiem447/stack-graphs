@@ -402,6 +402,7 @@ impl<'a> SpanCalculator<'a> {
         }
         let line = PositionedSubstring::from_line(self.string, line_utf8_offset);
         self.columns.clear();
+        self.columns.reserve(line.content.len());
         self.columns.extend(Offset::all_chars(line.content));
         let mut trimmed = line.clone();
         trimmed.trim_whitespace();
